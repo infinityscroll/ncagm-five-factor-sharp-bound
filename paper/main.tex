@@ -1,0 +1,938 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,longtable}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,xurl}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\D}{\mathcal D_5}
+\newcommand{\W}{\mathcal W}
+\newcommand{\Sym}{\mathfrak S}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\title{Sharp Five-Factor Recht--R\'e Lower Bounds\newline in Arbitrary Dimension}
+\author{}
+\date{Private AI-assisted draft, 19 October 2026\\Human review and priority assessment pending}
+\begin{document}
+\maketitle
+\begin{abstract}
+We determine a sharp lower Loewner bound for the average of ordered
+products of five distinct positive semidefinite matrices, for every integer
+$n\ge5$ and every finite matrix dimension, under $\sum_iA_i\preceq nI$.
+Writing $r=n/(n-1)$ and
+\[
+ a=\frac{n\bigl(6n-9+\sqrt{20n^2-60n+49}\bigr)}{16(n-1)(n-2)},
+\]
+the optimal lower constant is
+$\kappa_5(n)=a^2[r(3-r)a-r^2/2]$.
+An exact uniform localizer certificate proves the universal inequality;
+Zhong's known permutation-covariant real $n$-dimensional family attains it.
+The proof reduces to four matrix polynomials of sizes $7,4,4,4$ and
+104 positive semidefinite Bernstein coefficients over
+$\Q(\sqrt5,\sqrt{249})$, together with two positive scalar blocks.
+Separate exact implementations check the original free-word identity,
+the complete all-$n$ representation map, and the positivity data.
+The strict certificate also yields necessary and sufficient vector
+conditions for equality. We prove that the minimum attaining dimension
+is exactly $n-1$ over both fields and give an explicit real tuple in that
+dimension; every attaining normalized sum saturates the identity on a subspace of
+dimension at least $n-1$.
+This answers the five-factor specialization of Lai--Lim's question about
+the correct lower bound. It does not settle arbitrary product lengths or
+claim the first ordinary five-factor validity theorem.
+The manuscript is private and unrefereed; independent AI-agent replay is
+not human peer review or confirmed priority.
+\end{abstract}
+
+\section{Statement and relation to prior work}\label{sec:statement}
+Let $(n)_5=n(n-1)(n-2)(n-3)(n-4)$ and define the ordered sum
+\[
+ \D(A)=\sum_{\substack{(i_1,\ldots,i_5)\in\{1,\ldots,n\}^5\\
+                       i_1,\ldots,i_5\ \mathrm{distinct}}}
+ A_{i_1}A_{i_2}A_{i_3}A_{i_4}A_{i_5}.
+\]
+Reversal of the five indices shows that this sum is Hermitian.
+\begin{theorem}\label{thm:main}
+For every integer $n\ge5$, let $A_1,\ldots,A_n$ be positive semidefinite
+real symmetric or complex Hermitian matrices of any common finite dimension.
+If $\sum_iA_i\preceq nI$, then
+\begin{equation}\label{eq:main}
+ \frac{\D(A)}{(n)_5}\succeq-\kappa_5(n)I,
+ \qquad \kappa_5(n)=a^2\left[r(3-r)a-\frac{r^2}{2}\right],
+\end{equation}
+where
+\begin{equation}\label{eq:parameters}
+ r=\frac n{n-1},\qquad \Delta=\sqrt{20n^2-60n+49},\qquad
+ a=\frac{n(6n-9+\Delta)}{16(n-1)(n-2)}.
+\end{equation}
+For every such $n$, a real $n$-dimensional tuple with $\sum_iA_i=nI$
+attains equality on a nonzero vector. Thus $\kappa_5(n)$ is the exact
+dimension-unrestricted lower constant over either field.
+\end{theorem}
+The universal part of the proof includes finite exact algebraic checks
+specified in Sections~\ref{sec:localizer}--\ref{sec:verification}.
+Section~\ref{sec:attainment} proves attainment directly. In raw-sum
+normalization, set $C_5(n)=(n)_5\kappa_5(n)$; then
+\[
+ C_5(5)=\frac{3125(9033+581\sqrt{249})}{393216},\qquad
+ \lim_{n\to\infty}\kappa_5(n)=\frac{11+5\sqrt5}{64}.
+\]
+The result is a lower endpoint, not a comparison with
+$(n^{-1}\sum_iA_i)^5$, and not by itself an upper norm bound.
+Section~\ref{sec:equality} gives vector conditions for equality and its
+minimum dimension, rather than a classification of all tuples up to
+unitary equivalence.
+
+Recht and R\'e proposed the noncommutative AM--GM problem~\cite{recht-re}.
+Lai and Lim~\cite{lai-lim} disproved the original conjecture and developed
+its noncommutative sum-of-squares formulation. Their Section~6 asks,
+``What is the correct lower bound?'' Theorem~\ref{thm:main} answers that
+question for product length five. Their numerical raw-sum value at
+$(n,m)=(5,5)$ is prior evidence for this endpoint, not a new disproof here.
+Zhong's Section~1.1 and Appendix~A~\cite{zhong} already supply the
+permutation-covariant family and recurrence used below, building on
+De Sa's examples~\cite{desa}. The new certificate matches the optimized
+family value universally; the family and recurrence are not claimed as new.
+
+The public candidate repository of \texttt{ipitchford}~\cite{pitchford}
+already claims the ordinary five-factor upper bound for $n\ge5$ and lower
+bound for $n\ge6$, with failure at $n=5$. Its word-orbit and symmetry-block
+certificate architecture is reused and credited. Our target is the exact
+lower constant rather than the unit bound. The inspected source is pinned
+to commit \path{df3cb842014210eba99d1971be48aa079367feac}.
+The literature audit is bounded: the full theorem of Liu's CISS 2025
+paper~\cite{liu} was inaccessible through the checked lawful routes.
+Its accessible abstract does not substitute for its exact theorem or exclude
+overlap. Priority remains
+unconfirmed, independently of the mathematical certificate checks.
+
+\section{The known family attains the constant}\label{sec:attainment}
+This section is a self-contained specialization of Zhong's family and
+recurrence~\cite[Section~1.1 and Appendix~A]{zhong}.
+In $\R^n$, put $e=n^{-1/2}(1,\ldots,1)^T$, $P=I-ee^T$, and
+\[
+ z_i=\sqrt r\left(e_i-\frac1n(1,\ldots,1)^T\right).
+\]
+Then $z_i\perp e$, $\|z_i\|=1$, $z_i^Tz_j=-1/(n-1)$ for $i\ne j$,
+$\sum_i z_i=0$, and $\sum_i z_i z_i^T=rP$.
+Let $d=n-1-(n-2)a$ and define
+\begin{equation}\label{eq:family}
+ A_i=a(P-z_i z_i^T)+(e+\sqrt d\,z_i)(e+\sqrt d\,z_i)^T.
+\end{equation}
+These are PSD once $a,d>0$. To check this for every $n\ge5$, write
+$s=2-r\ge3/4$, $b=3-r$, and observe that $a$ is the larger root of
+\begin{equation}\label{eq:stationarity}
+ 16s a^2-6rb a+r^2=0.
+\end{equation}
+For $1<r\le5/4$, this quadratic has two positive roots; its vertex
+$3rb/(16s)$ is at most $5/8$. Its value at $1$ is
+$7r^2-34r+32\ge7/16>0$. Therefore $0<a<1$, and
+$d>n-1-(n-2)=1$. Summing~\eqref{eq:family} gives
+\[
+ \sum_i A_i=n ee^T+[na+r(d-a)]P=nI.
+\]
+
+For any ordered distinct-label word let
+$t_k=e^TA_{i_k}\cdots A_{i_1}e$, with $t_0=t_1=1$.
+Write the intermediate vector as $t_ke+\sum_{j=1}^k g_{j,k}z_{i_j}$
+and $h_k=\sum_jg_{j,k}$. For a fresh label $i$,
+\[
+ A_i e=e+\sqrt d\,z_i,\qquad
+ A_i z_j=az_j-\frac{\sqrt d}{n-1}e-\frac{d-a}{n-1}z_i\quad(j\ne i).
+\]
+Consequently
+\[
+ \binom{t_{k+1}}{h_{k+1}}=
+ \begin{pmatrix}1&-\sqrt d/(n-1)\\
+ \sqrt d&a-(d-a)/(n-1)\end{pmatrix}\binom{t_k}{h_k}.
+\]
+The transfer matrix has trace $2a$ and determinant $ar$. Thus
+\begin{equation}\label{eq:recurrence}
+ t_{k+2}=2at_{k+1}-ar t_k,
+ \qquad
+ t_5=8(2-r)a^4-4r(3-r)a^3+r^2a^2.
+\end{equation}
+Every distinct word has the same $e$-to-$e$ coefficient. Permutation
+covariance makes $\D(A)e$ a multiple of $e$, so
+$\D(A)e=(n)_5t_5e$. Using~\eqref{eq:stationarity},
+\[
+ t_5=a^2\left[\frac{r^2}{2}-r(3-r)a\right]=-\kappa_5(n).
+\]
+The stationary quadratic evaluated at $r/[2(3-r)]$ equals
+$r^2[4(2-r)/(3-r)^2-2]<0$; hence the larger root exceeds that point
+and $\kappa_5(n)>0$. This establishes the claimed attained value in
+both the real and complex settings. No assumption that this family is
+universally extremal is used: that conclusion follows from the certificate.
+
+\section{A free-polynomial localizer certificate}\label{sec:localizer}
+Use labels $0,\ldots,n-1$ in the certificate. Let $\W_n$ be the list
+consisting of the empty word, the linear words, and all ordered quadratic
+words, in that order and lexicographic order within each length.
+Its real span has orthonormal word basis and dimension $1+n+n^2$.
+For a word $w$, $w(A)^*$ reverses its letters; it does not commute them.
+
+Let $G$ be a symmetric Gram matrix indexed by $\W_n$ and invariant
+under permutations fixing label $0$. Define $G_i$ by relabelling $0$ as
+$i$. Let $H$ be a symmetric Gram matrix invariant under all label
+permutations. The certificate identity is
+\begin{align}
+ C_5(n)I+\D(A)
+ &=\sum_i\sum_{w,v\in\W_n}(G_i)_{w,v}\,w(A)^*A_iv(A)\nonumber\\
+ &\quad+\sum_{w,v\in\W_n}H_{w,v}\,
+ w(A)^*\left(nI-\sum_iA_i\right)v(A).\label{eq:localizer}
+\end{align}
+If $G,H\succeq0$, factoring these scalar matrices expresses the right
+side as sums of $p(A)^*A_ip(A)$ and
+$q(A)^*(nI-\sum_iA_i)q(A)$. This proves positivity for the full domain
+$\sum_iA_i\preceq nI$ in any finite dimension. The equality tuple is
+used to choose certificate coordinates; the universal proof never replaces
+the slack by zero.
+
+\subsection{Canonical coordinates and the word identity}
+For two words $w,v$, encode their concatenation with a separator between
+them, canonically renaming new letters in order of first appearance.
+For $G$, reserve $0$ for the marked label and name the others $1,2,\ldots$;
+for $H$, start with $0$. Take the lexicographically smaller code obtained
+from $(w,v)$ and $(v,w)$, with separator $-1$. Do not reverse either word
+within this code. This describes exactly simultaneous label invariance
+and Gram symmetry. There are $59$ marked and $22$ unmarked orbits.
+Enumerating pairs in $\W_6\times\W_6$ and retaining each code on its
+first occurrence fixes coordinates $z_0,\ldots,z_{80}$, with the marked
+orbits first. At most four active labels occur in a pair, so this indexing
+is valid for all $n\ge5$.
+
+The exact rational functions $z_c(u)$ are the ordered list
+\path{orbit_functions} in the frozen \path{CERTIFICATE.json};
+Appendix~\ref{app:coordinates} specifies its 18 free coordinates and
+the rational parameter $u$ is defined below. All $81$ functions are
+machine-readable proof data, not numerical approximations.
+
+To check~\eqref{eq:localizer}, take a concrete target word and sum over
+its splits into a prefix, one inserted letter, and a suffix, with each
+outer length at most two. The relevant $G_i$ entry has the reversed
+prefix as its left word; subtract the corresponding $H$ entry. For
+each split without an inserted letter, add $n$ times that $H$ entry.
+The required coefficient is $C_5(n)$ for the empty word, $1$ for a
+degree-five word with five distinct labels, and $0$ otherwise.
+All words through degree five are covered by their $76$ equality
+patterns. These coefficient equations have been checked as identities
+in $\Q(u)$, not by evaluating finitely many $n$.
+The target uses the raw ordered sum: there is no factor $5!$ or $(n)_5$
+inside~\eqref{eq:localizer}. If $X_i=A_i/n$, the raw lower constant
+becomes $C_5(n)/n^5$ on $\sum_iX_i\preceq I$.
+
+\section{The complete invariant representation}\label{sec:representation}
+We give the representation argument because checking a few contractions
+of a Gram matrix is insufficient without completeness. Let $q$ be the
+number of permuted letters: $q=n$ for $H$, and $q=n-1$ for $G$.
+In the latter case $0$ is fixed and all sums in this section use the
+other letters. In both cases $q\ge4$.
+
+The invariant vectors for $H$, in order, are
+\[
+ 1,\quad \sum_i x_i,\quad\sum_i x_i^2,\quad\sum_{i\ne j}x_ix_j.
+\]
+For $G$ they are
+\[
+ 1,\ x_0,\ \sum_i x_i,\ x_0^2,\ \sum_i x_0x_i,\
+ \sum_i x_ix_0,\ \sum_i x_i^2,\ \sum_{i\ne j}x_ix_j.
+\]
+These independent vectors have disjoint word supports and span the
+entire fixed subspace. Contracting the Gram matrices against them defines
+$H_0$ of size $4$ and $G_0$ of size $8$.
+
+For $c\in\R^q$ with $\sum_i c_i=0$, define
+\begin{align*}
+ L(c)&=\sum_i c_ix_i,& Q(c)&=\sum_i c_ix_i^2,\\
+ P(c)&=\sum_{i\ne j}(c_i+c_j)x_ix_j,&
+ M(c)&=\sum_{i\ne j}(c_i-c_j)x_ix_j.
+\end{align*}
+These give four copies of the standard representation for $H$, in the
+order $L,Q,P,M$. For $G$ use the six copies
+\[
+ L(c),\quad\sum_i c_ix_0x_i,\quad\sum_i c_ix_ix_0,\quad Q(c),P(c),M(c).
+\]
+They are orthogonal by support or by symmetry versus skew symmetry.
+Their squared norm multipliers relative to $\|c\|^2$ are $1$ except
+for $P,M$, where they are $2(q-2),2q$. Contract all copies against
+the same $c=e_0-e_1$ for $H$, or $e_1-e_2$ for $G$, obtaining
+$H_1$ of size $4$ and $G_1$ of size $6$.
+
+The remaining pair spaces are the symmetric zero-diagonal arrays with
+zero row sums, denoted $U_q$, and the skew arrays with zero row sums,
+denoted $V_q$. Their dimensions are
+\[
+ \dim U_q=\frac{q(q-3)}2,\qquad
+ \dim V_q=\frac{(q-1)(q-2)}2.
+\]
+Indeed, the symmetric row-sum map has rank $q$ for $q\ge3$ and the
+skew row-sum map has rank $q-1$; their complementary subspaces are
+exactly the pair copies already displayed.
+
+For completeness, the permutation module on unordered pairs has a
+three-dimensional commutant: an equivariant entry depends only on
+intersection size $0,1,2$. It contains one trivial and one standard
+summand, so its remaining nonzero summand $U_q$ has scalar commutant
+and is absolutely irreducible. On skew pairs, the image of
+$e_1\wedge e_2$ determines an equivariant map. Invariance under the
+remaining permutations and antisymmetry under $(1\ 2)$ leave two
+directions:
+\[
+ e_1\wedge e_2,\qquad
+ \sum_{j>2}(e_1\wedge e_j-e_2\wedge e_j).
+\]
+Thus that commutant has dimension two. Removing its standard copy
+leaves the absolutely irreducible $V_q$. The types are inequivalent
+by dimension except at $q=4$, where the standard and $V_4$ both have
+dimension three. Their transposition characters are $1$ and $-1$,
+respectively, so they remain inequivalent. This covers the marked
+$\Sym_4$ boundary at $n=5$.
+
+Use the symmetric switch
+\[
+ x_ix_j+x_jx_i+x_kx_l+x_lx_k-x_ix_k-x_kx_i-x_jx_l-x_lx_j
+\]
+and the skew triangle
+\[
+ x_ix_j+x_jx_k+x_kx_i-x_jx_i-x_kx_j-x_ix_k
+\]
+as representatives of $U_q,V_q$. Their squared norms are $8,6$.
+For $H$ take $(i,j,k,l)=(0,1,2,3)$; for $G$ take $(1,2,3,4)$.
+The resulting scalar contractions are $H_2,H_3,G_2,G_3$.
+
+\begin{lemma}\label{lem:blocks}
+For every integer $n\ge5$, $G\succeq0$ if and only if
+$G_0,G_1,G_2,G_3\succeq0$, and similarly for $H$.
+\end{lemma}
+\begin{proof}
+The dimensions exhaust the word space:
+\begin{align*}
+ H:&\quad4+4(q-1)+q(q-3)/2+(q-1)(q-2)/2=1+n+n^2,\quad q=n,\\
+ G:&\quad8+6(q-1)+q(q-3)/2+(q-1)(q-2)/2=1+n+n^2,\quad q=n-1.
+\end{align*}
+On each standard copy, equivariant bilinear forms are scalar multiples
+of the standard inner product. Evaluation at the common $c$ multiplies
+the multiplicity form by $\|c\|^2=2$, with invertible positive diagonal
+changes for the embedding norms. On $U_q,V_q$, the contractions are
+positive multiples $8,6$ of their scalar eigenvalues. Absolute
+irreducibility and inequivalence leave no untested coupling.
+The same real Gram matrices apply to complex Hermitian inputs.
+\end{proof}
+This also gives the symmetric invariant coordinate counts
+$8\cdot9/2+6\cdot7/2+2=59$ and $4\cdot5/2+4\cdot5/2+2=22$.
+
+\subsection{Exact construction of the block map}
+For representatives $R_{B,i}$ just specified, each contracted entry is
+\begin{equation}\label{eq:blockmap}
+ B_{ij}(n)=\sum_{c=0}^{80}L_{B,ij,c}(n)z_c(u),\qquad
+ L_{B,ij,c}(n)=\sum_{\substack{w,v\in\W_n\\\operatorname{orbit}(w,v)=c}}
+ R_{B,i}(w)R_{B,j}(v),
+\end{equation}
+with the appropriate marked or unmarked coordinate offset. The left
+word in this contraction is not reversed; reversal occurs only in
+the free-polynomial coefficient extraction.
+Fix the representative's anchor labels, including the mark for $G$.
+There are respectively $1,3,5,4$ anchors for $G_0,G_1,G_2,G_3$, and
+$0,2,4,3$ for $H_0,H_1,H_2,H_3$. A word pair contains at most four
+fresh labels. A canonical fresh-label pattern with $k$ distinct labels
+has $(n-\text{number of anchors})_k$ injective realizations.
+This derives~\eqref{eq:blockmap} as a polynomial of degree at most four
+in $n$. Impossible patterns automatically have falling factorial zero.
+
+An independent implementation reconstructed the integer count maps at
+$n=5,6,7,8,9$ and used exact degree-four interpolation. The preceding
+degree bound makes this a proof of the count maps, not empirical
+extrapolation of rational candidate entries. After substituting $n(u)$
+and the $81$ functions $z_c$, all $81$ upper-triangular block entries
+were checked as rational identities: $36+21+10+10+4=81$.
+Thus the positivity data belong to the actual Gram matrices in
+\eqref{eq:localizer}, rather than to an unrelated saved block array.
+
+\section{The rational chart and kernel reductions}\label{sec:chart}
+Put
+\begin{equation}\label{eq:chart}
+ \begin{gathered}
+ E=16u^2-12u+1,\qquad N=32u^2-18u+1,\\
+ n=\frac NE,\quad a=\frac N{16u-6},\quad
+ u_0=\frac{3+\sqrt5}{8},\quad u_5=\frac{21+\sqrt{249}}{48}.
+ \end{gathered}
+\end{equation}
+On $u_0<u\le u_5$, $E>0$ and
+\[
+ n'(u)=-\frac{2(48u^2-16u+3)}{E^2}<0,
+ \qquad n(u_5)=5,\qquad \lim_{u\downarrow u_0}n(u)=\infty.
+\]
+The numerator quadratic is positive by its negative discriminant.
+The inverse branch is
+\[
+ u=\frac{6n-9+\Delta}{16(n-2)},\qquad a=\frac{nu}{n-1}.
+\]
+It satisfies~\eqref{eq:stationarity}, equivalently
+$16(n-1)(n-2)a^2-6n(2n-3)a+n^2=0$.
+Every finite integer $n\ge5$ therefore occurs exactly once.
+Real-parameter polynomial positivity below is only a proof device;
+the matrix-tuple theorem has integer $n$.
+
+The denominator ledger is exhausted by the linear factors with roots
+\[
+ 0,\ 1,\ 1/16,\ 1/2,\ 1/6,\ 1/8,\ 3/8
+\]
+and the three quadratics
+\begin{equation}\label{eq:denoms}
+ u^2-\frac{15u}{16}+\frac3{32},\quad
+ u^2-\frac{17u}{16}+\frac9{64},\quad
+ u^2-\frac{3u}{4}+\frac1{16}.
+\end{equation}
+The exact verifier checks divisibility into these factors with constant
+remainder. They have no physical zero: $u_0>1/2$ and $u_5<37/48$;
+the first two quadratic pairs are
+$(15\pm\sqrt{129})/32$ and $(17\pm\sqrt{145})/32$, with small roots
+below $1/2$ and large roots above $13/16$ and $29/32$. The final large
+root is exactly the excluded $u_0$. These observations justify every
+finite specialization, including $n=5$.
+
+Let $\ell=n-(n-2)a$, $\beta=(n-2)a/(n-1)$, and
+$\gamma=a[2(n-2)a-n]/(n-1)$. The exact blocks satisfy
+\begin{align}
+ G_0q_T&=0,& q_T&=(1,\ell,\beta,\ell^2,\beta\ell,\beta\ell,\beta\ell,\gamma)^T,
+ \label{eq:kernelT}\\
+ G_1q_S&=0,& q_S&=(1,a,a,\ell,a,0)^T,\nonumber\\
+ G_1k&=0,& k&=(0,n-1,-(n-1),0,0,1)^T.\label{eq:kernelS}
+\end{align}
+The first two equations comprise the original fourteen kernel rows;
+the last contributes six additional checked rows. Here
+\[
+ 2(n-2)a-n=\frac{n(\Delta-2n-1)}{8(n-1)}>0,
+ \quad \Delta^2-(2n+1)^2=16(n-1)(n-3)>0,
+\]
+so $\gamma>0$. Delete coordinate $7$ from $G_0$ (zero-based indexing).
+For $G_1$, the rows $4,5$ of the two kernel columns $q_S,k$ form
+$\diag(a,1)$; delete those coordinates.
+
+\begin{lemma}\label{lem:delete}
+If a Hermitian matrix $M$ annihilates the columns of $K$ and the rows
+$K_J$ at a deleted coordinate set $J$ form an invertible square matrix,
+then $M\succeq0$ if and only if the retained principal block is PSD.
+\end{lemma}
+\begin{proof}
+For any vector $x$, let $y=x-KK_J^{-1}x_J$. It has zero coordinates
+on $J$ and $x^*Mx=y^*My$. The converse is principal compression.
+\end{proof}
+Thus the remaining matrix sizes are $7,4,4,4$; no exact-rank assumption
+at a special parameter is required. The scalar blocks, not imported
+from a lower-degree certificate, are
+\begin{align}
+ G_2&=\frac{-1024u^2+1088u-144}{8u-3},&
+ H_2&=\frac{-1024u^2+960u-96}{8u-3},\label{eq:scalars}\\
+ G_3&=0,&H_3&=0.\nonumber
+\end{align}
+The first two are positive: their numerators are $-1024$ times the
+second and first quadratics in~\eqref{eq:denoms}, respectively,
+which are negative on the interval. Also $8u-3>0$ and $G_2-H_2=16$.
+
+\section{The finite positivity certificate}\label{sec:verification}
+Here $B$ denotes one of the retained blocks
+$G_0[0{:}6],G_1[0{:}3],H_0,H_1$.
+For the exponent vector $h_B$ in Table~\ref{tab:normalization}, set
+\begin{equation}\label{eq:normalization}
+ D_B(n)=\diag(n^{h_{B,i}-2}),\qquad
+ P_B(u)=d_B(u)^2D_B(n(u))B(u)D_B(n(u)).
+\end{equation}
+The recorded general construction permits division by a common power
+$E^{v_B}$ after squaring the denominator; the accepted data have
+$v_B=0$ for all four blocks. Thus~\eqref{eq:normalization} is the exact
+conversion used here. All entries of $D_B$ are nonzero and $d_B$ has
+no physical zero, so it is an invertible congruence times a positive
+scalar. It preserves PSD in both directions.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{c c c c c}
+\toprule
+$B$ & size & $h_B$ & $\deg P_B$ & Bernstein degree $q_B$\\\midrule
+$G_0$ &7&$(0,1,0,2,1,1,1)$&24&28\\
+$G_1$ &4&$(1,2,2,2)$&12&16\\
+$H_0$ &4&$(0,0,1,0)$&28&32\\
+$H_1$ &4&$(1,2,1,1)$&20&24\\\bottomrule
+\end{tabular}
+\caption{Exact normalization and the four coefficient families.}\label{tab:normalization}
+\end{table}
+With $v=u-1/16$, $w=u-1/2$, $z=u-3/8$, the monic denominators are
+\[
+ d_{G_0}=uv^3w^3z^4,\quad d_{G_1}=vwz^3,\quad
+ d_{H_0}=uv^4w^4z^4,\quad d_{H_1}=uv^3w^3z^2.
+\]
+The polynomial conversion is verified entry by entry as an exact
+rational identity, including the indicated degrees.
+
+Set $t=(u-u_0)/(u_5-u_0)$. Every $P_B$ has the exact expansion
+\begin{equation}\label{eq:bernstein}
+ P_B(u_0+(u_5-u_0)t)=
+ \sum_{j=0}^{q_B}\binom{q_B}{j}t^j(1-t)^{q_B-j}C_{B,j},
+ \qquad C_{B,j}\in\Q(\sqrt5,\sqrt{249})^{s_B\times s_B}.
+\end{equation}
+There are $29+17+33+25=104$ coefficient matrices. Each is symmetric
+PSD and the four final coefficients $C_{B,q_B}$ are PD. The exact
+matrices and their rational-field $LDL^T$ factors are stored in
+\path{CERTIFICATE.json}. Its SHA-256 is
+\begin{center}\footnotesize\ttfamily
+ f4727ed67e787acb10208ca8fe7ea7a6c\\
+ 787cebfb117faf77df8647022843225.
+\end{center}
+This hash identifies the proof data; a hash alone is not a positivity
+argument. The checks establishing their asserted properties are specified
+next and have completed independent replays.
+
+\subsection{Exact arithmetic and deterministic acceptance}
+Represent each field element by four rational coordinates
+\[
+ A+B\sqrt5+C\sqrt{249}+D\sqrt{1245}
+ =(A+B\sqrt5)+(C+D\sqrt5)\sqrt{249},
+\]
+with both radicals positive. Addition and multiplication follow their
+quadratic relations. For $a+b\sqrt5$ with opposite nonzero signs,
+the sign is that of $a$ if $a^2-5b^2>0$, and that of $b$ if it is
+negative. Zero or matching signs are immediate. For
+$x+y\sqrt{249}$ with $x,y\in\Q(\sqrt5)$ of opposite signs, compare
+$x^2-249y^2$ in the smaller field in the same way. These norm tests
+give exact real signs, with no tolerance or floating eigenvalue.
+The rational basis is independent because $5$, $249$, and $1245$
+are nonsquares, so coordinate equality is exact.
+
+For each supplied factorization, the independent checker reconstructs
+$C=LDL^T$, verifies symmetry and nonnegative diagonal entries of $D$,
+and requires strictly positive diagonal entries for the final coefficient.
+During factor construction, a zero pivot is allowed only with an entirely
+zero remaining residual row. The replay can check the supplied factors
+without repeating elimination. A factorization with a negative pivot
+or failed identity is rejected.
+
+To verify~\eqref{eq:bernstein}, first compose the rational polynomial
+with $u_0+(u_5-u_0)t$ exactly. If its power coefficients are $p_i$, the
+degree-$q$ Bernstein coefficients must satisfy
+\[
+ C_k=\sum_{i=0}^k\frac{\binom{k}{i}}{\binom{q}{i}}p_i,
+ \qquad
+ p_i=\binom qi\sum_{k=0}^i(-1)^{i-k}\binom ik C_k.
+\]
+Both are matrix identities. The independent replay used Horner
+composition and forward differences, separate from the discovery
+implementation, and checked every power coefficient including those
+beyond the true degree. The verifier also reconstructs all $81$ orbit
+functions, all $76$ word equations, all $20$ kernel rows, the four
+scalar blocks, and all normalization and denominator identities.
+The separate count-map replay described after~\eqref{eq:blockmap}
+closes the remaining representation-map dependency.
+
+\begin{proposition}\label{prop:certificate}
+The frozen rational functions define PSD Gram matrices $G,H$ satisfying
+\eqref{eq:localizer} for every integer $n\ge5$.
+\end{proposition}
+\begin{proof}
+For $0<t\le1$, every scalar Bernstein weight in~\eqref{eq:bernstein}
+is nonnegative, while the final weight is $t^{q_B}>0$.
+Since $C_{B,q_B}\succ0$, all four $P_B(u)$ are PD on the physical
+interval. Equation~\eqref{eq:normalization} gives PD of the retained
+blocks. Lemma~\ref{lem:delete}, the verified kernels, and
+\eqref{eq:scalars} give PSD of all eight full blocks. Their maps are
+the contractions of the orbit Gram matrices, so
+Lemma~\ref{lem:blocks} gives $G,H\succeq0$.
+The exact $76$ coefficient identities give~\eqref{eq:localizer}.
+No positivity assumption is needed at the excluded infinite-$n$
+endpoint to infer positivity at finite $n$.
+\end{proof}
+Factoring the Gram matrices now proves the universal inequality in
+Theorem~\ref{thm:main}; Section~\ref{sec:attainment} proves its sharpness.
+Numerical optimization was used to discover a rational candidate, but
+solver status, a floating margin, and rounding accuracy have no role in
+this implication. Verification evaluates the fixed rational data only.
+
+\section{Equality and the minimum attaining dimension}\label{sec:equality}
+The main inequality and its original $n$-dimensional sharpness witness
+do not depend on this section. We now use the \emph{strict} positivity
+proved in Proposition~\ref{prop:certificate}, not merely the known
+kernel inclusions. Retain the raw parameter $\ell=n-(n-2)a$ and put
+\begin{equation}\label{eq:normalized-equality-parameters}
+ \begin{gathered}
+ X_i=A_i/n,\qquad S=\sum_iX_i\preceq I,\\
+ \lambda=\ell/n,\qquad h=a/n=\frac{1-\lambda}{n-2},\qquad
+ b=\frac1{n-1}.
+ \end{gathered}
+\end{equation}
+\begin{theorem}\label{thm:equality}
+Under the hypotheses of Theorem~\ref{thm:main}, a unit vector $e$
+satisfies $\D(A)e=-C_5(n)e$ if and only if
+\begin{align}
+ Se&=e,& SX_i e&=X_i e,\label{eq:saturation}\\
+ X_i^2e&=\lambda X_i e,\label{eq:quadratic-equality}\\
+ (X_iX_j+X_jX_i)e&=2h(X_i e+X_j e-be)&& (i\ne j).
+ \label{eq:pair-equality}
+\end{align}
+For every attaining tuple, $\dim\ker(I-S)\ge n-1$.
+The minimum ambient attaining dimension is exactly $n-1$, over
+both $\R$ and $\C$. In that minimum dimension, every attaining tuple
+satisfies $S=I$ on its whole space.
+\end{theorem}
+The proof uses the five-factor Gram kernels directly. It does not
+import a four-factor polynomial identity, nor assert a quantitative
+stability result or confirmed priority for the equality theorem.
+There is a direct earlier analogue at length two: Zhao's
+Theorem~5.1~\cite{zhao} classifies real two-factor equality through a
+common reducing canonical block and proves minimum attaining dimension
+$n$. The present result concerns a different endpoint and product length,
+and gives vector conditions rather than that stronger form of tuple
+classification. Here ``minimum dimension'' always means dimension for
+attaining the exact sharp endpoint. Lai--Lim's separate question about
+the smallest dimension supporting \emph{any} violation of the ordinary
+five-factor inequality~\cite[Section~3]{lai-lim} is not settled here.
+
+\subsection{Full kernel coordinates from strict block positivity}
+For finite $n$, the retained $G_0,G_1$ blocks are PD, so their full
+kernels have dimensions exactly one and two, spanned by
+$q_T$ and $q_S,k$ in~\eqref{eq:kernelT}--\eqref{eq:kernelS}.
+The blocks $H_0,H_1,G_2,H_2$ are strictly positive and $G_3=H_3=0$.
+Hence the only other Gram kernels are the skew zero-row-sum pair modules.
+These assertions concern finite $n$; no rank conclusion at $u_0$ is needed.
+
+The contracted kernels lift to the original word coordinates without an
+inverse norm factor. Indeed, if $V$ embeds the representatives of a
+block, $M=V^*GV$, $G\succeq0$, and $Mq=0$, then
+$(Vq)^*G(Vq)=0$, whence $GVq=0$. Use all zero-sum standard weight
+vectors in this statement. Completeness of the representation and the
+strict ranks show that the lifted vectors exhaust the kernel.
+
+Fix a mark $k$. A vector-valued array $y=(y_w)_{w\in\W_n}$ belongs
+to $\ker G_k$ tensored with the ambient space precisely when it has
+the following form. There are vectors $f,\xi_j,\zeta_j$ for $j\ne k$,
+with $\sum_{j\ne k}\xi_j=\sum_{j\ne k}\zeta_j=0$, and an active
+skew array $Z_{ij}$ with zero row sums, such that
+\begin{align}
+ (y_{\varnothing},y_k,y_j)&=(f,\ell f,\beta f+\xi_j),\nonumber\\
+ (y_{kk},y_{jj})&=(\ell^2f,\beta\ell f+\ell\xi_j),\nonumber\\
+ y_{kj}&=\beta\ell f+a\xi_j+(n-1)\zeta_j,\nonumber\\
+ y_{jk}&=\beta\ell f+a\xi_j-(n-1)\zeta_j,\nonumber\\
+ y_{ij}&=\gamma f+a(\xi_i+\xi_j)+(\zeta_i-\zeta_j)+Z_{ij}.
+ \label{eq:full-kernel}
+\end{align}
+Every displayed single index $j$ is active, so $j\ne k$; the last line uses
+$i\ne j$ with $i,j\ne k$; also $Z_{ii}=0$.
+The coefficients follow by inserting $q_T,q_S,k$ into the original
+representatives in Section~\ref{sec:representation}. In particular the
+standard skew representative contributes $\zeta_i-\zeta_j$, while
+the marked copies contribute $\pm(n-1)\zeta_j$.
+Similarly, $\ker H$ consists exactly of arrays supported on distinct
+quadratic words, skew in their two labels and with zero row sums.
+
+\subsection{Necessity on the full subunital domain}
+Write $R=\sum_iA_i$ and $T=nI-R\succeq0$. Equality in
+\eqref{eq:localizer} forces the vector arrays
+\begin{align}
+ y_w&=A_k^{1/2}w(A)e\in\ker G_k\otimes\mathcal H,\nonumber\\
+ z_w&=T^{1/2}w(A)e\in\ker H\otimes\mathcal H,
+ \label{eq:localizer-kernel-vectors}
+\end{align}
+where $\mathcal H$ is the real or complex ambient space.
+The constant and linear coordinates of $z$ vanish, so
+$Te=TA_i e=0$. This is exactly~\eqref{eq:saturation}.
+The marked linear coordinate in~\eqref{eq:full-kernel} gives
+$A_k^{1/2}A_k e=\ell A_k^{1/2}e$; multiplication by $A_k^{1/2}$
+yields $A_k^2e=\ell A_ke$, proving~\eqref{eq:quadratic-equality}.
+
+For $i\ne j$, define the raw symmetric defect
+\[
+ F_{ij}=A_iA_j+A_jA_i-2a(A_i+A_j-rI).
+\]
+The identities
+\[
+ \beta(\ell-a)=a(\ell-r),\qquad \gamma=a(2\beta-r)
+\]
+follow from the parameter definitions. If $k=i$ or $k=j$, the sum
+of the two marked/active coordinates in~\eqref{eq:full-kernel},
+using the first identity, gives $A_k^{1/2}F_{ij}e=0$.
+If $k$ is different from both, the active-pair coordinates give the
+same conclusion by the second identity. The constant, linear and
+symmetric quadratic coordinates of $z$ vanish, so
+$T^{1/2}F_{ij}e=0$ as well. Therefore
+\[
+ n\|F_{ij}e\|^2
+ =\sum_k\|A_k^{1/2}F_{ij}e\|^2+\|T^{1/2}F_{ij}e\|^2=0.
+\]
+Dividing $F_{ij}e=0$ by $n^2$ gives~\eqref{eq:pair-equality}.
+The slack term is essential here: $RF_{ij}e=0$ alone would not
+justify deleting the defect on a subunital tuple.
+
+\subsection{Sufficiency, including the skew coordinates}
+Assume~\eqref{eq:saturation}--\eqref{eq:pair-equality}, expressed
+also in raw variables. Fix $k$ and set
+\begin{align*}
+ f&=A_k^{1/2}e,\qquad
+ \xi_j=A_k^{1/2}A_je-\beta f,\\
+ \zeta_j&=\frac{A_k^{1/2}[A_k,A_j]e}{2(n-1)}\quad(j\ne k).
+\end{align*}
+The equality $A_k(A_k-\ell I)e=0$ and
+$\ker A_k=\ker A_k^{1/2}$ imply $y_k=\ell f$ and
+$y_{kk}=\ell^2f$. Saturation gives $Re=ne$ and
+$[A_i,R]e=0$, hence $\sum\xi_j=\sum\zeta_j=0$.
+Also $y_{jj}=\ell y_j$. The symmetric parts of all pair coordinates
+in~\eqref{eq:full-kernel} follow from $F_{ij}e=0$ and the two
+parameter identities above.
+
+For active labels define $d_{ij}=(y_{ij}-y_{ji})/2$. Their row sums are
+\[
+ \sum_{j\ne k}d_{ij}
+ =\frac12 A_k^{1/2}[A_i,R-A_k]e
+ =\frac12 A_k^{1/2}[A_k,A_i]e=(n-1)\zeta_i.
+\]
+Thus $Z_{ij}=d_{ij}-(\zeta_i-\zeta_j)$ is skew with zero row sums.
+This completes every coordinate of~\eqref{eq:full-kernel}, so each
+$G$-localizer term has zero quadratic form at $e$.
+
+For the slack array, the constant and linear coordinates vanish by
+saturation, the diagonal quadratic ones by the quadratic condition,
+and the symmetric pair coordinates by $F_{ij}e=0$. Finally
+\[
+ \sum_j z_{ij}=T^{1/2}A_iRe=nT^{1/2}A_i e=0.
+\]
+It lies in the exact skew kernel of $H$. All terms of the positive
+identity have zero quadratic form. Since its left side is PSD, it
+annihilates $e$, proving the converse in Theorem~\ref{thm:equality}.
+
+\subsection{The dimension obstruction over both fields}
+Let $v_i=X_ie$ and $p_i=\langle e,X_ie\rangle\ge0$.
+The equality conditions give
+\[
+ \sum_i v_i=e,\qquad \sum_i p_i=1,\qquad
+ \|v_i\|^2=\lambda p_i.
+\]
+Testing~\eqref{eq:pair-equality} against $e$ first gives
+$\operatorname{Re}\langle v_i,v_j\rangle=h(p_i+p_j-b)$.
+In the complex case, testing against $v_i$ and using
+$X_iv_i=\lambda v_i$ gives
+\[
+ (\lambda-2h)\langle v_i,v_j\rangle
+ =2h(\lambda-b)p_i-\langle v_i,X_jv_i\rangle\in\R.
+\]
+By Section~\ref{sec:attainment},
+$\delta:=\lambda-2h=1-a>0$. Hence the Gram matrix is real and equals
+\[
+ M=(\langle v_i,v_j\rangle)
+ =\diag(\delta p_i+hb)
+       +h(p\mathbf1^T+\mathbf1p^T-b\mathbf1\mathbf1^T).
+\]
+For any nonzero real or complex $z$ with $\sum_i z_i=0$,
+\[
+ z^*Mz=\sum_i(\delta p_i+hb)|z_i|^2>0.
+\]
+Thus $\operatorname{rank}M\ge n-1$. Each $v_i$ belongs to
+$\ker(I-S)$ by saturation, proving
+$\dim\ker(I-S)\ge n-1$ over either field.
+
+\subsection{A real attaining tuple in dimension \texorpdfstring{$n-1$}{n-1}}
+Put $m=n-1$ and work in $\R^m$. Choose a unit vector $e$ and
+unit regular-simplex vectors $z_1,\ldots,z_m$ in $e^\perp$.
+Thus $\sum_jz_j=0$, $z_i^Tz_j=-1/(m-1)$ for $i\ne j$, and
+$\sum_jz_jz_j^T=mP/(m-1)$, where $P=I-ee^T$.
+Set
+\[
+ \alpha=1/m=b,\qquad d=\lambda-\alpha,\qquad
+ \rho=(1-\lambda)/m.
+\]
+Because $0<a<1$, one has $\lambda>2/n>1/(n-1)$, so $d>0$;
+also $\rho,h>0$. Define
+\begin{align}
+ X_j&=\rho(P-z_jz_j^T)
+ +(\sqrt\alpha e+\sqrt d\,z_j)
+   (\sqrt\alpha e+\sqrt d\,z_j)^T \quad(1\le j\le m),\nonumber\\
+ X_n&=2hP.\label{eq:minimum-family}
+\end{align}
+All matrices are PSD. Their mixed terms cancel; the first $m$ matrices
+have $ee^T$ coefficient one and $P$ coefficient
+\[
+ \frac{m(m-2)\rho+md}{m-1}=1-2h.
+\]
+Thus $\sum_iX_i=I$. For $j\le m$,
+$v_j=\alpha e+\sqrt{\alpha d}\,z_j$ lies in the rank-one block
+with eigenvalue $\alpha+d=\lambda$. Hence
+$X_j^2e=\lambda v_j$, also valid for $X_ne=0$.
+For distinct active labels,
+\[
+ X_i z_j=\rho z_j-\frac{\sqrt{\alpha d}}{m-1}e
+                    -\frac{d-\rho}{m-1}z_i.
+\]
+The identities $\alpha-d/(m-1)=h$ and $m\rho/(m-1)=h$ give
+\[
+ (X_iX_j+X_jX_i)e
+ =2\alpha he+2h\sqrt{\alpha d}(z_i+z_j)
+ =2h(v_i+v_j-be).
+\]
+For the final label,
+$(X_nX_j+X_jX_n)e=2h\sqrt{\alpha d}\,z_j=2h(v_j-be)$.
+All equality conditions hold. Their proved sufficiency and the scaling
+$A_i=nX_i$ give attainment of the same sharp five-factor endpoint in
+dimension $n-1$. This completes Theorem~\ref{thm:equality}.
+
+\section{Reproducibility, scope, and review status}\label{sec:record}
+This \LaTeX{} source compiles without external inputs. The expanded
+$81$ rational orbit functions, affine table, normalization polynomials,
+and $104$ factorized coefficient matrices form a finite machine-readable
+supplement. The companion private directory is
+\path{overnight-ncagm-m5-all-n-private-package-20261019}; its
+\path{README.md} specifies the data manifest. With CPython 3.12 and the
+pinned SymPy 1.14.0 dependency already installed, its offline interface is
+\begin{verbatim}
+python3.12 -I verify.py
+\end{verbatim}
+No optimizer, network access, API credential, or original workspace is
+required. The two stages use the byte-identical frozen certificate at
+\path{stages/psd_words/INPUT-CERTIFICATE.json} and
+\path{stages/block_map/CERTIFICATE.json}. The wrapper's only adaptation
+of a mathematical worker removes three original absolute-environment
+guard lines in its temporary copy; the exact diff is included.
+A separate portable validation completed both stages with all exact checks
+passing, no solver calls, and no mathematical core changes. Its receipt
+is \path{portable.stdout.json} in the companion
+\path{overnight-ncagm-m5-portable-validation-20261019} directory.
+The source manifest beside this manuscript identifies that receipt and
+the frozen research files replayed.
+
+Two complementary independent exact implementations have completed:
+the first checks the $81$ functions, $76$ original word patterns,
+$20$ kernel rows, scalar conditions, polynomial transforms and all
+$104$ coefficient factorizations; the second reconstructs the complete
+all-$n$ block map and checks its $81$ upper-triangular identities.
+They share exact rational-polynomial infrastructure but do not import
+the discovery worker. The count-map replay uses exact integer counts
+and the proved degree bound, not sampled positivity. Analytical reviews
+separately establish representation completeness, physical-interval
+signs, the operator bridge, and attainment. The main acceptance record is
+\path{ACCEPTANCE.json}, hash
+\begin{center}\footnotesize\ttfamily
+ c64dd723abacd28724f3a8472dee2df3f7\\
+ caa725b91ceca04cf3d826d26084ff.
+\end{center}
+The equality extension was subsequently accepted after two separate
+analytical reviews of its full kernels, slack argument, complex Gram
+obstruction and smaller construction. Its separate source and acceptance
+hashes are included in \path{SOURCE-CLAIM-MANIFEST.json}; the original
+main-theorem acceptance is unchanged. The source preceding that extension
+is retained as \path{pre-equality.tex}.
+
+The proof and software were developed and audited by Codex AI agents
+in a private campaign. ``Independent'' here means a separately
+implemented check by another agent, not human refereeing or formal
+verification in a proof assistant. No human author identity, credential,
+endorsement, adoption, or employment consequence is asserted.
+The manuscript has not been published or sent to the cited authors.
+It settles only the stated five-factor lower-envelope problem; it does
+not establish a universal extremizer for other product lengths, the
+optimal general quadratic restoration threshold, or an algorithmic
+convergence comparison. Broader priority checking and human mathematical
+review remain open tasks.
+
+\appendix
+\section{Exact free-coordinate specification}\label{app:coordinates}
+The $18$ free orbit columns $F_j$, their degrees $d_j$, and integers
+$p_j,b_j$ in Table~\ref{tab:free} define
+\begin{equation}\label{eq:free}
+ z_{F_j}(n)=n^{4-d_j}\left[
+ \frac{p_j}{2^{32}5^{4-d_j}}+
+ \left(\frac1n-\frac15\right)\frac{b_j}{2^{32}}\right].
+\end{equation}
+Thus $z_{F_j}(5)=p_j/2^{32}$ is the fixed exact five-label seed.
+These are the final accepted slopes, not the earlier rejected candidate.
+The remaining coordinates are the exact rational strings in the
+hash-bound \path{CERTIFICATE.json}; equivalently they are obtained
+from \path{INPUT-AFFINE.json}'s $81\times19$
+\path{solution_matrix_rows} applied to
+$(z_{F_0},\ldots,z_{F_{17}},1)^T$.
+Its hash is
+\begin{center}\footnotesize\ttfamily
+ 7f8c881a0f58aa0d7e20f5e0b002b5c5\\
+ d5b493299e8cb772d9eadd79f526a639.
+\end{center}
+The canonical indexing in Section~\ref{sec:localizer} fixes the meaning
+of every column, so no unspecified ordering convention is required.
+The validity check reconstructs the target identity from these functions;
+it does not rely on the history of how the affine equations were solved.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{r r r r r}
+\toprule
+$j$&$F_j$&$d_j$&$p_j=2^{32}z_{F_j}(5)$&$b_j$\\\midrule
+0&17&3&-20817478263&88271623635\\
+1&25&3&-18396979216&84921120947\\
+2&61&2&11706295450&-9365392863\\
+3&62&2&12981031495&-6837242709\\
+4&64&2&75433334948&-81291345767\\
+5&65&3&-24441626383&77610325069\\
+6&66&3&-17077590016&71145486647\\
+7&68&3&-12903045670&70652260805\\
+8&69&3&-13157619467&57507367161\\
+9&70&4&5969730599&-76348992586\\
+10&71&4&2907939245&-55936656701\\
+11&72&4&4181582164&-48912958583\\
+12&73&4&2235060079&-67273566954\\
+13&74&4&1929660160&-48211383911\\
+14&76&4&3769223925&-104625015253\\
+15&78&4&3242886733&-81769581127\\
+16&79&4&5296781463&-98155140573\\
+17&80&4&2541005637&-57879970852\\\bottomrule
+\end{tabular}
+\caption{Fixed dyadic seed and slope data in canonical orbit order.}\label{tab:free}
+\end{table}
+
+In JSON, each field coordinate is a list of four rational strings.
+Their basis order is
+\[ (1,\sqrt5,\sqrt{249},\sqrt{1245}). \]
+The certificate's \path{coefficient_certificates} entries contain
+\path{name}, \path{bernstein_degree}, and an ordered coefficient list.
+Each list item has its index \path{k}, exact \path{matrix}, and
+\path{LDL}, including the lower factor and diagonal pivots.
+The \path{POLYNOMIAL-CHECKPOINT.json} entries specify $h_B,d_B,v_B$
+and the polynomial affine rows before insertion of the fixed slopes.
+All polynomial strings use the single variable \texttt{u} over $\Q$.
+This specification, the listed finite data, and the exact arithmetic
+rules in Section~\ref{sec:verification} determine a deterministic
+certificate check without an optimizer or a choice of test points.
+
+\begin{thebibliography}{9}
+\bibitem{recht-re}
+B. Recht and C. R\'e,
+\emph{Toward a noncommutative arithmetic-geometric mean inequality:
+conjectures, case-studies, and consequences}, COLT 2012, PMLR 23.
+\href{https://proceedings.mlr.press/v23/recht12.html}{Primary proceedings page}.
+\bibitem{lai-lim}
+Z. Lai and L.-H. Lim,
+\emph{Recht--R\'e Noncommutative Arithmetic--Geometric Mean Conjecture
+is False}, ICML 2020, PMLR 119, 5608--5617.
+\href{https://proceedings.mlr.press/v119/lai20a.html}{Primary proceedings page}.
+\bibitem{desa}
+C. De Sa, \emph{Random Reshuffling is Not Always Better}, NeurIPS 33 (2020).
+\href{https://proceedings.neurips.cc/paper/2020/hash/42299f06ee419aa5d9d07798b56779e2-Abstract.html}{Primary proceedings page}.
+\bibitem{zhong}
+Y. Zhong, \emph{When the noncommutative AM-GM inequality holds},
+arXiv:2610.04874v1, 4 October 2026.
+\href{https://arxiv.org/abs/2610.04874v1}{Versioned primary record}.
+\bibitem{pitchford}
+\texttt{ipitchford}, \emph{Exact Low-Length Recht--R\'e Inequalities},
+public candidate repository, \texttt{v1.1.1-candidate}.
+Pinned commit \path{df3cb842014210eba99d1971be48aa079367feac}.
+\href{https://github.com/ipitchford/exact-low-length-recht-re-inequalities/tree/df3cb842014210eba99d1971be48aa079367feac}{Versioned primary source}.
+\bibitem{liu}
+X. Liu, \emph{A Note on Arithmetic--Geometric Mean Inequality for
+Well-Conditioned Matrices}, CISS 2025.
+\href{https://doi.org/10.1109/CISS64860.2025.10944733}{DOI: 10.1109/CISS64860.2025.10944733}.
+Full theorem not inspected; see the priority limitation in Section~\ref{sec:statement}.
+\bibitem{zhao}
+J. Zhao, \emph{Sharpness and Rigidity of the Two-Factor Recht--R\'e
+Lower Bound}, arXiv:2610.00155v1, 2026.
+\href{https://arxiv.org/html/2610.00155v1#S5}{Versioned primary text, Theorem~5.1}.
+\end{thebibliography}
+\end{document}

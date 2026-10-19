@@ -1,0 +1,26 @@
+{
+  "checked_utc": "2026-10-19T02:00:28.537690+00:00",
+  "queries": 2,
+  "new_primary_full_texts": 1,
+  "result": "No matching sharp all-n five-factor theorem located in this bounded query set. This is not priority certification.",
+  "sources": [
+    {
+      "url": "https://arxiv.org/html/2610.00155v1",
+      "title": "Sharpness and Rigidity of the Two-Factor Recht\u2013R\u00e9 Lower Bound",
+      "scope": "Two-factor attainment and equality rigidity. Introduction explicitly scopes higher product lengths separately. Does not establish our m5 target. All its two-factor claims remain prior work."
+    },
+    {
+      "url": "https://proceedings.mlr.press/v119/lai20a.html",
+      "title": "Recht\u2013R\u00e9 Noncommutative Arithmetic-Geometric Mean Conjecture is False",
+      "scope": "Known original m5 failure and numerical lower endpoints; already included in the campaign source boundary."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.04874",
+      "title": "When the noncommutative AM-GM inequality holds",
+      "scope": "Known general sufficient threshold and symmetric witness family; already included in source boundary."
+    }
+  ],
+  "secondary_syntheses_used_as_evidence": false,
+  "new_scientific_runtime": false,
+  "new_contact_or_publication": false
+}

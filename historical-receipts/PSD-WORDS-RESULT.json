@@ -1,0 +1,61 @@
+{
+  "all_checks": "PASS",
+  "blocks": [
+    {
+      "block": "G0",
+      "coefficient_matrices": 29,
+      "exact_LDLT_reconstruction": true,
+      "exact_field_signs": true,
+      "independent_Horner_and_forward_difference_polynomial_identity": true,
+      "size": 7
+    },
+    {
+      "block": "G1",
+      "coefficient_matrices": 17,
+      "exact_LDLT_reconstruction": true,
+      "exact_field_signs": true,
+      "independent_Horner_and_forward_difference_polynomial_identity": true,
+      "size": 4
+    },
+    {
+      "block": "H0",
+      "coefficient_matrices": 33,
+      "exact_LDLT_reconstruction": true,
+      "exact_field_signs": true,
+      "independent_Horner_and_forward_difference_polynomial_identity": true,
+      "size": 4
+    },
+    {
+      "block": "H1",
+      "coefficient_matrices": 25,
+      "exact_LDLT_reconstruction": true,
+      "exact_field_signs": true,
+      "independent_Horner_and_forward_difference_polynomial_identity": true,
+      "size": 4
+    }
+  ],
+  "certificate_sha256": "f4727ed67e787acb10208ca8fe7ea7a6c787cebfb117faf77df8647022843225",
+  "concrete_word_patterns_checked": 76,
+  "discovery_imports": 0,
+  "independence": {
+    "PSD": "supplied factorization independently reconstructed; no elimination rerun",
+    "field_arithmetic_and_signs": "new implementation",
+    "polynomial": "Horner composition versus Bernstein forward differences",
+    "representation_block_contractions": "REUSED RAW MAP; SEPARATE BRIDGE REQUIRED",
+    "shared_engine": "SymPy QQ(u) exact polynomial arithmetic",
+    "word_coefficients": "direct word-pair localizer expansion"
+  },
+  "kernel_rows_checked": 20,
+  "matrices_checked": 104,
+  "new_roundings": 0,
+  "no_human_or_priority_claim": true,
+  "orbit_functions_checked": 81,
+  "scalar_blocks_checked": 4,
+  "scientific_verdict": "INDEPENDENT_CERTIFICATE_CHECK_CONDITIONAL_ON_REPRESENTATION_CONTRACTION_BRIDGE",
+  "scope": "integer n>=5 matrix tuples; continuous polynomial interval; no equality-witness replay",
+  "solver_calls": 0,
+  "source_sha256": "f849d249b5e0350fce864836c9204224250f8c0a2246ac791edf05b3a324498d",
+  "status": "COMPLETED_EXACT_GATE",
+  "worker_cpu_seconds": 3.74938,
+  "zero_free_factor_checks": 82
+}

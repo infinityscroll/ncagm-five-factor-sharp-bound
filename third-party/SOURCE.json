@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/ipitchford/exact-low-length-recht-re-inequalities",
+  "commit": "df3cb842014210eba99d1971be48aa079367feac",
+  "file": "LICENSE",
+  "git_blob_sha": "9d01199077acd41f90ddc0c6e6aa0d8f63b361ae",
+  "sha256": "8c5bfd05728b98356d25742d60344c8f39a82faacf5758451c2628b0f9f9773f",
+  "scope": "Preserve the pinned framework repository license and attribution; no endorsement or permission to publish this private package is implied.",
+  "retrieved_date_utc": "2026-10-19",
+  "receipt_recorded_utc": "2026-10-19T04:06:37Z"
+}

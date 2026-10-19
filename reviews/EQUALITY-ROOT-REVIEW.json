@@ -1,0 +1,16 @@
+{
+  "status": "PASS_ROOT_ANALYTICAL_REVIEW_SEPARATE_SKEPTIC_PENDING",
+  "at_utc": "2026-10-19T03:54:05.752167+00:00",
+  "source_sha256": "903967205ad25bff845a9f27d83cb964b19a5d323591a629c89ef65a32682aad",
+  "checks": [
+    "Strict reduced blocks imply exact fullG kernel multiplicities; PSD contractedkernel lifting Vq is valid with nonorthonormal representatives.",
+    "Raw word coordinate form matches trivial and two standard copies, and the remaining skewzero-row-sum module.",
+    "beta(L-a)=a(L-r) gives markedpairdefect annihilation; gamma=a(2beta-r) gives unmarkedpaircase. Slack plus everyAk proves n times defectnorm\u00b2=0 onfullsubunitaldomain.",
+    "Converse active skew row sums equal(n-1)zeta, which matches standard skew differences; remaining array lies inV. Slack antisymmetry androwzero close converse.",
+    "a<1 proof: convex stationary quadratic has vertex<1 andF(1)>=7, so largerroot<1. Positivitydelta=1-a makes complexinnerproducts real andGrampositiveononesperp.",
+    "Smallerdimension simplex construction hassumI, q,h,dpositive and all equalityvectorconditions, so exactdimensionn-1 andsaturationspacebound follow.",
+    "OptionalT0 recurrence trace2a/determinantar checked by hand; fivepositionlastlabelsum -4ra\u00b2(6a-r)(r-a) derived from CayleyHamilton; rawaveragenormalization correct includingn5zeroavoidcount."
+  ],
+  "scope": "Analytical review only; no script execution, numerical tests, independent human review or priority claim. Separate skeptical review requested before incorporating into manuscript.",
+  "main_theorem_independent": true
+}

@@ -1,0 +1,36 @@
+{
+  "status": "PASS_EXACT_COMPUTER_ASSISTED_ALL_N_SHARP_M5_LOWER_THEOREM_INTERNAL_REVIEW",
+  "at_utc": "2026-10-19T03:51:06.487195+00:00",
+  "claim": "For each integern>=5, all finite-dimensional real symmetric or complex Hermitian PSD Ai with sumAi<=nI satisfy D5(A)/(n)_5 >= -kappa5(n)I. kappa5=a\u00b2[r(3-r)a-r\u00b2/2], r=n/(n-1), a=n(6n-9+sqrt(20n\u00b2-60n+49))/(16(n-1)(n-2)). Known real n-dimensional family attains equality.",
+  "artifacts": {
+    "overnight-ncagm-m5-interior-margin-gate-20261019/CERTIFICATE.json": "f4727ed67e787acb10208ca8fe7ea7a6c787cebfb117faf77df8647022843225",
+    "overnight-ncagm-m5-interior-margin-gate-20261019/ROOT-CLOSEOUT.json": "cde60e98c9964823e4a46b076e8fd154547e00203ab32427d1b9d814a26af7cb",
+    "overnight-ncagm-m5-all-n-independent-replay-20261019/ROOT-CLOSEOUT.json": "7bdeadd4a5b6dfd2eca0ec5b9851f2ee5c33e7d15e6a1c6ed68ed80d91eba887",
+    "overnight-ncagm-m5-independent-block-map-20261019/ROOT-CLOSEOUT.json": "93f814a97a11fe559f8fe85f532bf28833908715f1082285e486105396340f87",
+    "overnight-ncagm-m5-uniform-semantics-review-20261019/REVIEW.md": "361a6fba36ca02c8bf9ee5676dbb4a175a0886e1fd9a2fa581a40d52931026ea",
+    "overnight-ncagm-m5-theorem-bridge-audit-20261019/THEOREM-BRIDGE-AUDIT.md": "43877596f19dd50e50bd5860b806baa886c16a761e23cf4e077fe4394233f012",
+    "overnight-ncagm-outcome-significance-audit-20261019/ASSESSMENT.md": "5ec74c93c4c728bf5d2c5d7641717f43bcec44e2f6143d1ba5ef38d71e52c121"
+  },
+  "evidence": {
+    "independently_implemented_exact_arithmetic_replay": true,
+    "independently_reconstructed_all_n_block_map": true,
+    "source_bound_analytical_representation_completeness": true,
+    "root_and_separate_AI_theorem_bridge_review": true,
+    "attainment": "Analytical known-family recurrence with explicit real matrices; previous n5 exact witness replay is a control, not all-n proof basis."
+  },
+  "not_claimed": [
+    "Resolution for arbitrary productlength",
+    "New refutation of Recht-Re original conjecture",
+    "Discovery of Zhong family or recurrence",
+    "First ordinary m5 n6 validity proof",
+    "Minimum attaining dimension at m5",
+    "Independent human review",
+    "Established priority",
+    "External adoption",
+    "Hiring interest"
+  ],
+  "publication_authorized": false,
+  "public": false,
+  "priority": "Apparent distinction from inspected primary work; Liu2025 fulltext inaccessible, bounded coverage, no first-ever claim.",
+  "remaining": "Prepare integrated private paper, portable reproducible verifier and carefully scoped tweet draft; continue approved research campaign through08:41:35UTC."
+}

@@ -1,0 +1,14 @@
+{
+  "all_checks": "PASS",
+  "certificate_sha256": "f4727ed67e787acb10208ca8fe7ea7a6c787cebfb117faf77df8647022843225",
+  "field": "Q(u)",
+  "independent_explicit_word_counts": true,
+  "reconstructed_maps_sha256": "3196c46270371c9d445d579ddf716d5f188eb8e2cd85fd113d66ea4fd761c0c8",
+  "scalar_polynomial_maps": 3965,
+  "scope": "Reconstruct all eight complete contracted Gram blocks of this fixed candidate. PSD and original localizer identities are separate obligations. No novelty claim.",
+  "source_generator_imported": false,
+  "source_sha256": "079e2761d4aa0d4f1be35f338d67a0d8c1929b7eb5cac25f4acf4e9ea0f96d21",
+  "status": "COMPLETED_EXACT_GATE",
+  "upper_triangle_identities": 81,
+  "worker_cpu_seconds": 2.1305639999999997
+}

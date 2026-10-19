@@ -1,0 +1,59 @@
+{
+  "preparation_status": "PREPARED_NOT_RUN",
+  "sha256": {
+    "exact_gate.py": "f849d249b5e0350fce864836c9204224250f8c0a2246ac791edf05b3a324498d",
+    "watchdog.py": "cbb7d0485cc19e11993c2d78b9a7f7df9a03baf88185767296782f8dbf1fc1fb",
+    "PLAN.md": "47e593e9c5d0497c7a5ed3998f274253bf5321bdb2a67f82484350ef160c9b27",
+    "PREPARATION.md": "1eb5c836abd91b191021c5c145bfdd4332b0affd3b3a96745a0eb9bef1f1ddbb",
+    "COLLISION-CLEANUP.txt": "ba9fe5627c2b57be7376118b224b30bcaa16e31effb39fcecca7390e539e329d",
+    "INPUT-AFFINE.json": "7f8c881a0f58aa0d7e20f5e0b002b5c5d5b493299e8cb772d9eadd79f526a639",
+    "INPUT-BLOCKS.json": "bab92a3fd0d78fab2a1018490a93cd342d66e2b0e32293c20b87e25890aa58db",
+    "INPUT-CERTIFICATE.json": "f4727ed67e787acb10208ca8fe7ea7a6c787cebfb117faf77df8647022843225",
+    "INPUT-N5-CERTIFICATE.json": "ca7f077729415158696d6162166104ff0cc1f7897735b0efa19c3d23041e4ceb",
+    "INPUT-POLYNOMIAL-CHECKPOINT.json": "71372f912ef204a3e78287358fb77b418ec4df08edfc76500d3285c69730e20c"
+  },
+  "target": "Check C(n)I+D5(A) certificate for integer n>=5, A_i>=0 and sum A_i<=nI; continuous parameter polynomial proof",
+  "resources": {
+    "worker_cpu_seconds": 30,
+    "wall_seconds": 45,
+    "sampled_and_final_worker_rss_bytes": 1073741824,
+    "single_attempt": true,
+    "retry_permitted": false,
+    "scope": "New additive independent verification cost; no discovery budget relabeling"
+  },
+  "runtime": {
+    "prepared_command_for_later_root_authorization_only": "../overnight-ncagm-sharp-root-20261018/.venv/bin/python watchdog.py --authorized-run",
+    "python": "Existing CPython3.12 environment",
+    "sympy": "Existing1.14.0 for QQ(u) only",
+    "numerical_solver_imports": false,
+    "package_installations": false,
+    "execution_import_probe_or_syntax_test_during_preparation": false
+  },
+  "checks": {
+    "certificate_matrices": 104,
+    "orbit_functions": 81,
+    "directly_generated_word_patterns": 76,
+    "kernel_rows_including_extra_G1": 20,
+    "scalar_blocks": 4,
+    "new_algebraic_field_arithmetic": true,
+    "PSD_method": "Exact stored unit-lower factor times signed diagonal times transpose, all entries reconstructed",
+    "polynomial_method": "Bernstein forward differences versus independent Horner affine substitution",
+    "zero_free_factors": "Exact algebraic endpoint signs and elementary linear/quadratic proofs, not copied ledger classifications",
+    "free_coordinate_bridge": "Explicit actual certificate free orbit functions equal the slope-derived free coordinates",
+    "word_generation": "Explicit concrete word-pair localizer expansion, canonical representatives",
+    "normalization": "Direct rational block normalization; positive scalar and invertible congruence; E-power fixed0"
+  },
+  "reused_dependencies": {
+    "exact_polynomial_engine": "SymPy QQ(u)",
+    "raw_representation_contraction_map": "INPUT-BLOCKS.json; independently regenerated only by root's separate block-map gate",
+    "representation_completeness_theorem": "Separate source-bound mathematical audit",
+    "attaining_family": "Not replayed here"
+  },
+  "independent_block_map_gate": "../overnight-ncagm-m5-independent-block-map-20261019",
+  "discovery_worker_imported_or_executed": false,
+  "solver_calls": 0,
+  "new_roundings": 0,
+  "publication_contact_or_novelty_claim": false,
+  "execution_authorized_by_this_manifest": false,
+  "collision_cleanup": "Only newly created files moved from old n5 replay directory; preserved old files checked against frozen hashes"
+}

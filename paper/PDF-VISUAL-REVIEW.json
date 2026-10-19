@@ -1,0 +1,26 @@
+{
+  "status": "PASS_FINAL_SOURCE_COMPILE_AND_14_PAGE_VISUAL_REVIEW",
+  "recorded_utc": "2026-10-19T04:14:12.614386+00:00",
+  "source_sha256": "15d7b25b47b687177fbb943164885bfc5db8a80515442fd19155132833f67abe",
+  "pdf_sha256": "e1b40d0a793b5fe5d96d2b6093bd6e38adbf9ddc7542fb101f38aea6c2de7367",
+  "page_count": 14,
+  "page_png_sha256": {
+    "final-01.png": "fc76d8639114e723a19c78c06e679dd366c1a13a35e93a1e131901e380e559e4",
+    "final-02.png": "c49a98959c9c31e39b6bedd0f3732c5b9d4f071c3d7682ce4a463d196a1ca1fd",
+    "final-03.png": "832ddc62e05dd4c03e5c129e0fba9512f7a934a9970034540a50317220793d8b",
+    "final-04.png": "005f7089c5a6caf0c818091f6d2838d54aa45fee457baec6165c4be69aac4dad",
+    "final-05.png": "8300d7c4c9e82cacd16b31387718a510a08003cee049e49a261b870a2fef6b2b",
+    "final-06.png": "913049e1406d55b297fd7f5cae19f25a10a447f4663792912a34077d814b5c29",
+    "final-07.png": "27a6aacc0053fe0836a3502f32acfae799b03ca3d7eb65c5d15f351fe9f82100",
+    "final-08.png": "d3cf7fa500e0a0322d2ffffdd6d86de066bfc911e6351fbd54ceee0ac3e9dda1",
+    "final-09.png": "8df2339b76402cb3bbfc73b41219bd5b29c3c9220692587b30be7cfb8c140b7f",
+    "final-10.png": "c507f3b8af71da67edca5ac810d69591be328476cac4eca308b9843152c07ed3",
+    "final-11.png": "ce6ab7d0afdd31cdbab03efe1e77f17fbb8e6672d8efc1afb665d338e2ae2057",
+    "final-12.png": "c1ad092bb78102368be3f59bf50e9436b4445ff68112213dc32fe37c0bedf97b",
+    "final-13.png": "e6724ee50a246c4850e1bb0b1a936eae1b355a17e6112d9061f3a869a1cdef84",
+    "final-14.png": "0cee09ba26d8bc3be6cd8d3f418058ac88010c9621946adb31bbadacd914ee9b"
+  },
+  "visual_findings": "No clipping, overlap, missing glyphs, undefined references or overfull boxes. Tables, math displays, links and page numbers are legible.",
+  "export_dependency": "Existing cached official xurl.sty supplied only through temporary TEXINPUTS; no source mathematical changes, install, new editor tab or compiler replacement.",
+  "export_non_scientific_errors_preserved": "Initial system xurl missing; subsequent stdout decode issue. Logs preserved outside distributable. Neither altered proof checks."
+}

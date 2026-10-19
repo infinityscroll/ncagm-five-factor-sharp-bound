@@ -1,0 +1,12 @@
+{
+  "status": "PREPARED_APPROVED_GITHUB_RELEASE",
+  "date": "2026-10-19",
+  "approved_archive_sha256": "030e39a499c0cd7cd4a83eb4cf6477e55d1bcc37539999b89583aa7102627da5",
+  "approved_manifest_sha256": "f4077c9fff5be3a42df54cbba97b5bd9fb4746c0432ab2e8d7954c12b24ad9ca",
+  "paper_sha256": "e1b40d0a793b5fe5d96d2b6093bd6e38adbf9ddc7542fb101f38aea6c2de7367",
+  "scientific_changes_from_approved_package": 0,
+  "documentation_delta": "Public README wording/links and publication provenance; all mathematical files unchanged.",
+  "AI_assisted": true,
+  "human_review": false,
+  "publication_priority_confirmed": false
+}

@@ -1,0 +1,35 @@
+{
+  "status": "PASS_FROZEN_PROOF_AND_VERIFIER_FILES_UNCHANGED_SINCE_PORTABLE_REPLAY",
+  "tested_manifest_sha256": "d14d5580555a787ba9def8f4ba0172cc904379adb0cc0eb3f04110ca0cb38292",
+  "changed_existing_files": [
+    "PROVENANCE.md",
+    "README.md",
+    "SOURCES.md"
+  ],
+  "proof_and_verifier_files_compared": [
+    "adaptation/RUNTIME-GUARDS.patch",
+    "adaptation/psd_words.effective.py",
+    "requirements.txt",
+    "stages/block_map/CERTIFICATE.json",
+    "stages/block_map/FROZEN-MANIFEST.json",
+    "stages/block_map/INPUT-BLOCKS.json",
+    "stages/block_map/PLAN.md",
+    "stages/block_map/exact_gate.py",
+    "stages/block_map/watchdog.py",
+    "stages/psd_words/COLLISION-CLEANUP.txt",
+    "stages/psd_words/FROZEN-MANIFEST.json",
+    "stages/psd_words/INPUT-AFFINE.json",
+    "stages/psd_words/INPUT-BLOCKS.json",
+    "stages/psd_words/INPUT-CERTIFICATE.json",
+    "stages/psd_words/INPUT-N5-CERTIFICATE.json",
+    "stages/psd_words/INPUT-POLYNOMIAL-CHECKPOINT.json",
+    "stages/psd_words/PLAN.md",
+    "stages/psd_words/PREPARATION.md",
+    "stages/psd_words/exact_gate.py",
+    "stages/psd_words/watchdog.py",
+    "verify.py"
+  ],
+  "new_files_scope": "Paper, equality proof and reviews, literature followups, original license, portable receipts, and optional plot with presentation-only source/data.",
+  "new_scientific_run": false,
+  "reason_no_repeat": "Both exact stages already passed; only documentation and optional visualization added. No mathematical worker, supervisor, certificate, data or wrapper changes."
+}

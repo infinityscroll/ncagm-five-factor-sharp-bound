@@ -1,0 +1,19 @@
+{
+  "all_children_peak_rss_baseline_bytes": 0,
+  "all_children_peak_rss_bytes": 80379904,
+  "all_children_system_cpu_seconds_delta": 0.115506,
+  "all_children_total_cpu_seconds_delta": 2.44666,
+  "all_children_user_cpu_seconds_delta": 2.331154,
+  "detail": null,
+  "elapsed_wall_seconds": 2.3924109999788925,
+  "maximum_observed_worker_rss_bytes": 80363520,
+  "partial_results_are_not_a_scientific_pass": true,
+  "resource_accounting_note": "wait4 is worker-specific; RUSAGE_CHILDREN CPU deltas include ps probes. ru_maxrss is a maximum, not an additive counter: its baseline is recorded, not subtracted. macOS ru_maxrss is bytes; Linux ru_maxrss is KiB and is multiplied by 1024.",
+  "retry_permitted": false,
+  "status": "COMPLETED_EXACT_GATE",
+  "worker_exit_code": 0,
+  "worker_peak_rss_bytes": 80379904,
+  "worker_system_cpu_seconds": 0.051365999999999995,
+  "worker_total_cpu_seconds": 2.3474739999999996,
+  "worker_user_cpu_seconds": 2.296108
+}

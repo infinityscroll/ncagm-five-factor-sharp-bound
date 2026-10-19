@@ -1,0 +1,20 @@
+2026-10-19 — preservation of the earlier n5 replay
+
+The initially requested directory overnight-ncagm-m5-independent-replay-20261019
+already held the older n5 source and outputs. Before any launch, root noticed
+the directory collision. Only the newly added exact_gate.py, watchdog.py,
+PLAN.md and five INPUT-*.json files were moved into the fresh directory
+overnight-ncagm-m5-all-n-independent-replay-20261019. No run occurred in either
+directory during this preparation. No old n5 filename was overwritten.
+
+The following old files were hashed after cleanup and match their prior
+FROZEN-INPUTS.json / FROZEN-OUTPUTS.json entries:
+CERTIFICATE.json ca7f077729415158696d6162166104ff0cc1f7897735b0efa19c3d23041e4ceb
+replay.py 25f12efb68ce2c593413d9b154cbc6a2f2da6e690eaeac5ee82e1079a55cbc6f
+PLAN.json 9e33c869c1dcbfd045c33a2ec1e4aac552bfe5b4a406bde387e3ec29b36a4b63
+RESULT.json aede7fa2e9353af9b0b9caaecb540fec477694e0df6470d30b5f8a3ef9b79b2b
+REPORT.md 19c40a5e63bcf6422cc738887011e5b56f6084621a690cca2811f32d6d5925bb
+INDEPENDENT-GRAM-LDL.json d1a7705f8e1922c68bfa468b949746586a8b04f3247fdbb55e1fa897862626e0
+INDEPENDENT-WITNESS.json dfae0b9e9d2cd4ac5d9ab4dcce03f436d43f5e4bf133150eb610871601440cbd
+
+All frozen files from that earlier replay remain in their original directory.

@@ -1,0 +1,19 @@
+{
+  "status": "SUCCESS_BUILT_IN_COMPILER",
+  "source": "main.tex",
+  "source_sha256": "15d7b25b47b687177fbb943164885bfc5db8a80515442fd19155132833f67abe",
+  "compiler_tool": "mcp__codex_app__compile_latex_document",
+  "reported_kind": "success",
+  "reported_message": "The current source compiled successfully with the desktop editor's compiler.",
+  "source_errors_reported": false,
+  "new_editor_tab_opened": false,
+  "existing_editor_replaced": false,
+  "PDF_export_performed_by_this_agent": true,
+  "visual_review": "PASS: all14 final pages inspected; after one-word abstract normalization clarification only page1 changed and it was reinspected. Pages2-14 are pixel-identical to the inspected render.",
+  "scientific_code_run_during_manuscript_preparation": false,
+  "publication_or_external_contact": false,
+  "root_final_builtin_compile": "success",
+  "pdf_sha256": "e1b40d0a793b5fe5d96d2b6093bd6e38adbf9ddc7542fb101f38aea6c2de7367",
+  "source_overfull_boxes": 0,
+  "remaining_layout_warnings": "One underfull bibliography line, visually acceptable"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS_PORTABLE_OFFLINE_REPLAYS",
+  "at_utc": "2026-10-19T03:58:30.139037+00:00",
+  "receipt_sha256": "ede5276ba575a19b8088595facd8913d992460d40f5e6bdece46d1467decd970",
+  "tested_manifest_sha256": "d14d5580555a787ba9def8f4ba0172cc904379adb0cc0eb3f04110ca0cb38292",
+  "wrapper_sha256": "6c145c87a495c67020382cdc5b9a77b2af2fea234d7ad5dfc7c4a62609db8450",
+  "worker_cpu_seconds": 6.184914,
+  "worker_wall_seconds": 6.275737957970705,
+  "paid_compute_usd": 0,
+  "root_review": "Both exactstages passed under portablewrapper; zero stderr. Same fixedcertificate, no scientificcorechanges. Temporary data/sourcecopies prevent mutating proof package. FinalREADME/PDF metadata may change afterthis validation; preserve testedmanifest andverify all mathematicalcore/datahashesunchanged beforefinalpackagefreeze.",
+  "external_review": false,
+  "published": false
+}

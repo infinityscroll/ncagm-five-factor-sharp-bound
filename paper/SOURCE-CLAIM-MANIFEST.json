@@ -1,0 +1,86 @@
+{
+  "status": "PASS_PRIVATE_MANUSCRIPT_ROOT_READ_BUILT_IN_COMPILE_AND_VISUAL_REVIEW",
+  "date": "2026-10-19",
+  "source": "main.tex",
+  "source_sha256": "15d7b25b47b687177fbb943164885bfc5db8a80515442fd19155132833f67abe",
+  "preserved_pre_equality_source": {
+    "path": "pre-equality.tex",
+    "sha256": "f60780ccfb8777f6f21ad3cadf66773edd97ef380dea2f9e018073b25aa8efdd"
+  },
+  "base": "/Users/dusk/technical_contribution_scout_20261003/orthogonal-research-20261018",
+  "claim": {
+    "quantifiers": "Every integer n>=5, every common finite dimension, real symmetric or complex Hermitian A_i>=0 with sum A_i<=nI",
+    "normalization": "D5 is the raw sum of all ordered products of five pairwise distinct labels; W5=D5/(n)_5",
+    "inequality": "W5 >= -kappa5(n) I",
+    "parameters": "r=n/(n-1); Delta=sqrt(20n^2-60n+49); a=n*(6n-9+Delta)/(16*(n-1)*(n-2))",
+    "constant": "kappa5(n)=a^2*(r*(3-r)*a-r^2/2)",
+    "sharpness": "Known Zhong family, proved explicitly in the manuscript, attains the lower endpoint in real dimension n for each n",
+    "universal_domain": "Full subunital sum constraint; slack localizer nI-sum_i A_i is retained",
+    "equality_vector_conditions": "For X_i=A_i/n, S=sum X_i, lambda=[n-(n-2)a]/n, h=a/n, b=1/(n-1): Se=e and SX_i e=X_i e; X_i^2 e=lambda X_i e; (X_iX_j+X_jX_i)e=2h(X_i e+X_j e-b e) for i!=j, are necessary and sufficient for endpoint equality",
+    "minimum_attaining_dimension": "Exactly n-1 over real and complex fields, with explicit real construction",
+    "saturation_space": "Every attaining tuple has dim ker(I-S)>=n-1; at minimum ambient dimension S=I"
+  },
+  "proof_obligations": {
+    "original_free_word_identity": "76 equality patterns checked exactly over Q(u)",
+    "all_n_Gram_contraction_map": "81 upper-triangular entries independently reconstructed from exact count maps; polynomial degree<=4 justified analytically",
+    "representation_completeness": "G blocks8/6/1/1, H blocks4/4/1/1; marked S4 boundary explicitly treated",
+    "kernels": "14 original rows and six extra G1 rows; safe principal deletions via gamma>0 and diag(a,1)",
+    "matrix_PSD": "104 exact Bernstein coefficient matrices with degrees28/16/32/24; last coefficient in each block is PD",
+    "scalars": "G2,H2 strictly positive, G3=H3=0",
+    "normalizations": "Positive denominator squares and invertible diagonal congruences; accepted common E powers all zero",
+    "attainment": "Analytical simplex-family transfer recurrence; no numerical sharpness inference",
+    "equality_extension": "Uses the accepted strict certificate to identify exact full kernels; proves slack-assisted necessity, skew-row-sum sufficiency, complex Gram realness, dimension obstruction and smaller attaining tuple"
+  },
+  "inputs_sha256": {
+    "overnight-ncagm-m5-all-n-acceptance-20261019/ACCEPTANCE.json": "c64dd723abacd28724f3a8472dee2df3f7caa725b91ceca04cf3d826d26084ff",
+    "overnight-ncagm-m5-interior-margin-gate-20261019/CERTIFICATE.json": "f4727ed67e787acb10208ca8fe7ea7a6c787cebfb117faf77df8647022843225",
+    "overnight-ncagm-m5-interior-margin-gate-20261019/CANDIDATE.json": "024a16d4daf54ea5090597df4d8d5521eccb3d3b4dacaed35ffa4fbe9f633b2a",
+    "overnight-ncagm-m5-interior-margin-gate-20261019/INPUT-AFFINE.json": "7f8c881a0f58aa0d7e20f5e0b002b5c5d5b493299e8cb772d9eadd79f526a639",
+    "overnight-ncagm-m5-interior-margin-gate-20261019/INPUT-BLOCKS.json": "bab92a3fd0d78fab2a1018490a93cd342d66e2b0e32293c20b87e25890aa58db",
+    "overnight-ncagm-m5-interior-margin-gate-20261019/INPUT-DENOMINATOR-ROOTS.json": "947edca5522d434307f9414d64002de57f8de524b916806a72c8c98e00a493d7",
+    "overnight-ncagm-m5-interior-margin-gate-20261019/INPUT-N5-CERTIFICATE.json": "ca7f077729415158696d6162166104ff0cc1f7897735b0efa19c3d23041e4ceb",
+    "overnight-ncagm-m5-interior-margin-gate-20261019/POLYNOMIAL-CHECKPOINT.json": "71372f912ef204a3e78287358fb77b418ec4df08edfc76500d3285c69730e20c",
+    "overnight-ncagm-m5-all-n-independent-replay-20261019/RESULT.json": "b28c2620f5e7ab2e2d0c382d5113510ec9cdef5e12b09b44f1a6194f37561bd0",
+    "overnight-ncagm-m5-independent-block-map-20261019/RESULT.json": "427d6bbf0414568d6d8d7fe5136c92dfefbcfbe623cb08fe3dbb08551f798542",
+    "overnight-ncagm-m5-uniform-semantics-review-20261019/REVIEW.md": "361a6fba36ca02c8bf9ee5676dbb4a175a0886e1fd9a2fa581a40d52931026ea",
+    "overnight-ncagm-m5-theorem-bridge-audit-20261019/THEOREM-BRIDGE-AUDIT.md": "43877596f19dd50e50bd5860b806baa886c16a761e23cf4e077fe4394233f012",
+    "overnight-ncagm-outcome-significance-audit-20261019/ASSESSMENT.md": "5ec74c93c4c728bf5d2c5d7641717f43bcec44e2f6143d1ba5ef38d71e52c121",
+    "overnight-ncagm-outcome-significance-audit-20261019/PRIORITY-FOLLOWUP-ADDENDUM.md": "fd6eea54ed1471f728e6741ab817ee0dbfae3b2dba25be29315f3ffe952e5f07",
+    "overnight-ncagm-m5-all-n-private-package-20261019/verify.py": "6c145c87a495c67020382cdc5b9a77b2af2fea234d7ad5dfc7c4a62609db8450",
+    "overnight-ncagm-m5-portable-validation-20261019/portable.stdout.json": "ede5276ba575a19b8088595facd8913d992460d40f5e6bdece46d1467decd970",
+    "overnight-ncagm-m5-equality-dimension-20261019/KERNEL-EQUALITY-AND-MINIMUM-DIMENSION.md": "903967205ad25bff845a9f27d83cb964b19a5d323591a629c89ef65a32682aad",
+    "overnight-ncagm-m5-equality-dimension-20261019/ROOT-REVIEW.json": "9674ecc58686976fd07e8a56f312422ee88fe1745eb4f6f5b6fc32c4b92a643e",
+    "overnight-ncagm-m5-equality-dimension-20261019/SEPARATE-REVIEW.md": "e1d5972958ff768e698261331a7d09430fe3484d991a2619350eb39bde35b30b",
+    "overnight-ncagm-m5-equality-dimension-20261019/ACCEPTANCE.json": "cd2eeb3528617a28b5394853e1e31e5f3a533fc912786b68b3cc2c5cac6d9552",
+    "overnight-ncagm-outcome-significance-audit-20261019/BROWSER-ACCESS-ADDENDUM.md": "ca305a5d34758622e41b86b26b8890f30e4461463a44422e8f1319d3eb8a5cda",
+    "overnight-ncagm-m5-equality-dimension-20261019/EQUALITY-PRIORITY-CHECK.md": "b4da8ff37bcbfb7481025be33d1f63925f7c11660d16a3fbba836af3cb3c2b1b",
+    "overnight-ncagm-m5-all-n-private-package-20261019/validation/TESTED-PACKAGE-MANIFEST.json": "d14d5580555a787ba9def8f4ba0172cc904379adb0cc0eb3f04110ca0cb38292",
+    "overnight-ncagm-m5-equality-dimension-20261019/ORIGINAL-SOURCES-FOLLOWUP.md": "feb534969ec855b3a2f3b408d60d483ddc070aa4964f2e622a0f36b0dba849c7"
+  },
+  "portable_interface": "python3.12 -I verify.py, with existing CPython3.12 and SymPy1.14.0; offline, no solver",
+  "equality_extension": "Included after separate root and AI hand-review acceptance; original main acceptance unchanged",
+  "priority": "Unconfirmed. Family/recurrence credited to Zhong, ordinary five-factor n>=6 lower claim and framework credited to ipitchford, Lai-Lim lower-envelope question restricted to m5. Zhao's real two-factor equality/minimum-dimension theorem is credited as a direct antecedent. Exact-endpoint dimension is distinguished from Lai-Lim's minimum dimension for any violation. Liu CISS2025 full theorem remains unread.",
+  "review": "Independent exact AI-agent replays and analytical reviews; no independent human review or formal proof-assistant verification",
+  "publication_authorized": false,
+  "public": false,
+  "not_claimed": [
+    "Sharpness for arbitrary product length",
+    "New refutation of the original Recht-Re conjecture",
+    "Discovery of the known family or recurrence",
+    "First ordinary m5 n>=6 validity theorem",
+    "Full classification of equality tuples up to unitary equivalence or quantitative stability",
+    "Smallest matrix dimension supporting any violation of the ordinary five-factor inequality",
+    "Established priority, human endorsement, adoption or employment consequences"
+  ],
+  "artifact_workflow": {
+    "pdf_skill_marker_completed_before_first_authoring": true,
+    "built_in_compiler": "success",
+    "opened_or_replaced_editor_tab": false,
+    "PDF_export_and_visual_review": "PASS all14 pages"
+  },
+  "pdf": {
+    "path": "output/pdf/sharp-five-factor-bound.pdf",
+    "sha256": "e1b40d0a793b5fe5d96d2b6093bd6e38adbf9ddc7542fb101f38aea6c2de7367",
+    "pages": 14
+  }
+}

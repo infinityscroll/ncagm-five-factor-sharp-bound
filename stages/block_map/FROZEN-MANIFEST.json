@@ -1,0 +1,18 @@
+{
+  "preparation_status": "PREPARED_NOT_RUN",
+  "sha256": {
+    "exact_gate.py": "079e2761d4aa0d4f1be35f338d67a0d8c1929b7eb5cac25f4acf4e9ea0f96d21",
+    "watchdog.py": "cbb7d0485cc19e11993c2d78b9a7f7df9a03baf88185767296782f8dbf1fc1fb",
+    "PLAN.md": "8fc35ef2246b4565eabb67bf8e75772f535a0408c657b20db77186ce427d1e48",
+    "CERTIFICATE.json": "f4727ed67e787acb10208ca8fe7ea7a6c787cebfb117faf77df8647022843225",
+    "INPUT-BLOCKS.json": "bab92a3fd0d78fab2a1018490a93cd342d66e2b0e32293c20b87e25890aa58db"
+  },
+  "resources": {
+    "cpu_seconds": 30,
+    "wall_seconds": 45,
+    "rss_bytes": 1073741824,
+    "single_attempt": true
+  },
+  "scope": "Independent explicit-word polynomial map reconstruction for the fixed final certificate. No PSD/priority or theorem claim by itself.",
+  "execution_authorized_by_manifest": false
+}

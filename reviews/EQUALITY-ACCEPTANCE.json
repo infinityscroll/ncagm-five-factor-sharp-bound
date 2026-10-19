@@ -1,0 +1,32 @@
+{
+  "status": "PASS_ROOT_AND_SEPARATE_AI_HAND_REVIEW_CONDITIONAL_ON_ACCEPTED_STRICT_CERTIFICATE",
+  "accepted_utc": "2026-10-19T04:04:00Z",
+  "claim": "For integer n>=5, exact subunital equality-vector characterization for the sharp five-product lower bound; minimum attaining ambient dimension is n-1 over real and complex fields.",
+  "dependencies": {
+    "proof": {
+      "path": "overnight-ncagm-m5-equality-dimension-20261019/KERNEL-EQUALITY-AND-MINIMUM-DIMENSION.md",
+      "sha256": "903967205ad25bff845a9f27d83cb964b19a5d323591a629c89ef65a32682aad"
+    },
+    "root_review": {
+      "path": "overnight-ncagm-m5-equality-dimension-20261019/ROOT-REVIEW.json",
+      "sha256": "9674ecc58686976fd07e8a56f312422ee88fe1745eb4f6f5b6fc32c4b92a643e"
+    },
+    "separate_review": {
+      "path": "overnight-ncagm-m5-equality-dimension-20261019/SEPARATE-REVIEW.md",
+      "sha256": "e1d5972958ff768e698261331a7d09430fe3484d991a2619350eb39bde35b30b"
+    },
+    "main_acceptance": {
+      "path": "overnight-ncagm-m5-all-n-acceptance-20261019/ACCEPTANCE.json",
+      "sha256": "c64dd723abacd28724f3a8472dee2df3f7caa725b91ceca04cf3d826d26084ff"
+    }
+  },
+  "root_final_review": "Read separate 5-part review in full; it agrees with the prior full root hand audit, including nonorthonormal kernel lifting, slack saturation, complex Gram realness, rank bound and explicit attaining construction.",
+  "limits": [
+    "No full classification of all equality tuples",
+    "No quantitative stability theorem",
+    "No external human review",
+    "Priority not confirmed"
+  ],
+  "new_scientific_computation": false,
+  "publication_authorized": false
+}

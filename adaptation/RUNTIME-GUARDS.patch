@@ -1,0 +1,14 @@
+--- stages/psd_words/exact_gate.py	2026-10-19 06:53:03
++++ adaptation/psd_words.effective.py	2026-10-19 06:53:23
+@@ -16,11 +16,8 @@
+ 
+ ROOT = Path(__file__).resolve().parent
+ START = time.process_time()
+-VENV = ROOT.parent / "overnight-ncagm-sharp-root-20261018/.venv"
+ assert sys.version_info[:2] == (3, 12)
+-assert Path(sys.prefix).resolve() == VENV.resolve()
+ import sympy
+-assert Path(sympy.__file__).resolve().is_relative_to((VENV/"lib/python3.12/site-packages").resolve())
+ 
+ 
+ def digest(path):
